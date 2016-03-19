@@ -1,1 +1,1 @@
-$<.map{|l|a,b,c,d,e,f,g,h,j,m=l.chars;puts a!="."&&a==e&&a==l[8]?a:c!="."&&c==e&&c==g ?c:a!="."&&a==b&&a==c ?a:d!="."&&d==e&&d==f ?d:g!="."&&g==h&&g==l[8]?g:l.scan(/(x|o).{2}\1.{2}\1/).flatten[0]||"?"}
+puts$<.map{|l|l.scan(/\A.{3}{0,2}(o|x)\1\1.{3}{0,1}|(x|o)..\2..\2|(x|o)...\3...\3|..(x|o).\4.\4../).flatten.compact.find{|m|m!=""}||'?'}

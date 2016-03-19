@@ -21,42 +21,14 @@
 #
 # See the test output for examples
 
-module Bigrams
-  module_function
+w=STDIN.read.downcase.split
 
-  def parse(text)
-    tally = {}
-    prev_word = nil
+t=Hash.new{|h,k|h[k]=0}
 
-    text.split.each do |word|
-
-      word_starts_with_punctuation = word =~ /^[^\w\s]/
-      prev_word_ends_with_punctuation = prev_word =~ /[^\w\s]$/
-
-      break_for_punctuation = word_starts_with_punctuation || prev_word_ends_with_punctuation
-
-      if prev_word && ! break_for_punctuation
-        # Remove internal punctuation to create bigram
-        bigram = [
-          prev_word.downcase.gsub(/[^\w\s]/, ''),
-          word.downcase.gsub(/[^\w\s]/, ''),
-        ].join ' '
-
-        # Increment our counter
-        tally[bigram] = 0 unless tally.has_key? bigram
-        tally[bigram] += 1
-      end
-
-      # Remember our this word for next time
-      prev_word = word
-    end
-    tally
-  end
-
+w.each_cons(2) do |a, b|
+next if b=~/^[^\w\s]/ || a=~/[^\w\s]$/
+c=a.gsub(/[^\w\s]/,'')+" "+b.gsub(/[^\w\s]/, '')
+t[c]+=1
 end
 
-results = Bigrams.parse $stdin.read
-results
-  .sort_by { |bigram, occurences| [-1 * occurences, bigram] }
-  .select { |bigram, occurences| occurences > 1 }
-  .each { |bigram, occurences| puts "#{bigram}: #{occurences.to_s}"}
+t.select{|b,o|o>1}.sort_by{|b,o|[-1*o,b]}.each{|b,o|puts "#{b}: #{o}"}

@@ -1,1 +1,1 @@
-$<.each{|l|s=l.to_f;puts s>90?'A':s>80?'B':s>70?'C':s>60?'D':s>50?'E':s>=0?'F':'?'}
+puts$<.map{|l|Hash[90,'A',80,'B',70,'C',60,'D',50,'E',-1,'F'].find{|k,v|l.to_f>k}[1]}

@@ -1,4 +1,4 @@
-b=$<.read.split("\n").map(&:chars).transpose.select.with_index{|l,i|(i+1)%2==0}.map(&:join).sort_by{|a|a.scan(/[^\s_]+/) }
+b=$<.read.split("\n").map(&:chars).transpose.select.with_index{|l,i|-~i%2==0}.map(&:join).sort_by{|a|a.scan(/[^\s_]+/)}
 
 def z(l)i=i(l)
 " "*(i+1)+"|"*(l.size-i-1)end
@@ -9,11 +9,9 @@ l.index("_")end
 o=[]
 o<<z(b[0])
 
-b.each_cons(2) do |a, b|
-o<<a
+b.each_cons(2){|a,b|o<<a
 m=[i(a),i(b)].min
-o<<" "*(m+1)+"|"*(b.size-m-1)
-end
+o<<" "*-~m+"|"*(b.size-m-1)}
 
 o<<b[-1]
 o<<z(b[-1])

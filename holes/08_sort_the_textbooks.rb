@@ -35,9 +35,7 @@
 # The output will need to be the same set of books organized in alphabetical order.
 # The height of the books must stay the same and the title must have the same spacing from the top when re-arranged.
 
-b=STDIN.read
-
-b = b.split("\n").map(&:chars).transpose.select.with_index{|l,i| (i+1)%2==0}.map(&:join).sort_by{|a| a.scan(/[^\s_]+/) }
+b=STDIN.read.split("\n").map(&:chars).transpose.select.with_index{|l,i|(i+1)%2==0}.map(&:join).sort_by{|a|a.scan(/[^\s_]+/) }
 
 def z(l)i=i(l)
 " "*(i+1)+"|"*(l.size-i-1)end

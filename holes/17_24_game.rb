@@ -1,10 +1,6 @@
-E=['((%dr %s %dr) %s %dr) %s %dr','(%dr %s (%dr %s %dr)) %s %dr','(%dr %s %dr) %s (%dr %s %dr)','%dr %s ((%dr %s %dr) %s %dr)','%dr %s (%dr %s (%dr %s %dr))']
-O=%i(+ - * /).repeated_permutation(3).to_a
-def s(d)
-s=[]
-d.permutation.to_a.uniq.product(O,E){|(a,b,c,d),(o1,o2,o3),e|t=e%[a,o1,b,o2,c,o3,d]
-v=eval(t) rescue next
-s<<t.delete("r") if v==24}
+def s(d)s=[]
+d.permutation.to_a.uniq.product(%i(+ - * /).repeated_permutation(3).to_a,['((%dr %s %dr) %s %dr) %s %dr','(%dr %s (%dr %s %dr)) %s %dr','(%dr %s %dr) %s (%dr %s %dr)','%dr %s ((%dr %s %dr) %s %dr)','%dr %s (%dr %s (%dr %s %dr))']){|(a,b,c,d),(x,y,z),e|t=e%[a,x,b,y,c,z,d]
+s<<t.delete("r") if eval(t)==24 rescue next}
 s.sort
 end
 

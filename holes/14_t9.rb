@@ -1,1 +1,1 @@
-$<.each{|l|puts l.tr("abcdefghijklmnopqrstuvwxyz", "22233344455566677778889999")}
+puts $<.map{|l|l.tr"abcdefghijklmnopqrstuvwxyz","22233344455566677778889999"}

@@ -1,1 +1,1 @@
-puts $<.map{|l|l.scan(/\d+/).map(&:to_i).inject :+}
+puts$<.map{|l|l.split.map(&:to_i).inject:+}

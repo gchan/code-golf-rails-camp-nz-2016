@@ -1,2 +1,1 @@
-a="\n--+---+--\n"
-$<.each{|l|i=l.gsub("."," ");puts i[0]+" | #{i[1]} | #{i[2]}#{a}#{i[3]} | #{i[4]} | #{i[5]}#{a}#{i[6]} | #{i[7]} | #{i[8]}\n\n"}
+puts$<.map{|l|l.strip.gsub("."," ").chars.each_slice(3).map{|a|a.join(" | ")}.join("\n--+---+--\n")+"\n\n"}

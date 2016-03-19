@@ -1,8 +1,3 @@
-# Print out the nursery rhyme.
-
-# Code taken Katrina Owen's excellent talk on refactoring
-# https://github.com/kytrinyx/one-undo
-
 A={fly:'',spider:"It wriggled and jiggled and tickled inside her.\n",bird:"How absurd to swallow a bird!\n",cat:"Imagine that, to swallow a cat!\n",dog:"What a hog, to swallow a dog!\n",goat:"Just opened her throat and swallowed a goat!\n",cow:"I don't know how she swallowed a cow!\n",horse:"She's dead, of course!\n"}
 puts ((1..8).inject(''){|l,n|i=n-1
 f=A.keys[i]

@@ -3,6 +3,4 @@
 # Each output line should be the corresponding sum
 #
 
-while l=gets do
-puts l.scan(/\d+/).map(&:to_i).inject(:+)
-end
+puts $<.map{|l|l.scan(/\d+/).map(&:to_i).inject(:+)}
